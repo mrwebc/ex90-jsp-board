@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 네임스페이스는 "풀패키지+인터페이스명" -->
+<mapper namespace="com.study.jsp.persistence.BoardMapper">
+  <cache />
+  
+  <sql id="basic_select">
+    select bno, title, content, writer, regdate, viewcnt
+    from tbl_board order by bno desc, regdate desc
+  </sql>
+  
+  <insert id="create" parameterType="bVO">
+    insert into tbl_board (title,content,writer)
+    values (#{title}, #{content}, #{writer});
+  </insert>
+  
+  <select id="listAll" resultType="bVo">
+    <include refid="basic_select" />
+  </select>
+  
+  <select id="listPage" resultType="bVo">
+    <include refid="basic_select" />
+    limit #{offset}, 10;
+  </select>
+  
+  <select id="listCri" parameterType="cri" resultType="bVo">
+    <include refid="basic_select" />
+    limit #{offset}, #{spp};
+  </select>
+  
+
+  <select id="listPaging" parameterType="cri" resultType="bVo">
+    <include refid="basic_select" />
+    limit #{offset}, #{spp};
+  </select>
+  
+<!--   
+  <select id="listCriteria" parameterType="cri" resultType="bVo">
+    <include refid="basic_select" />
+    limit #{offset}, #{spp};
+  </select>
+   -->
+  <select id="read" resultType="bVo">
+    select bno, title, content, writer, regdate, viewcnt 
+    from tbl_board where bno = #{bno};  
+  </select>
+  
+  <update id="addcnt">
+    update tbl_board set viewcnt = viewcnt+1 where bno = #{bno}
+  </update>
+  
+  <update id="update" parameterType="bVo">
+    update tbl_board 
+    <set>
+        <if test="title!=null">title=#{title},</if>
+        <if test="content!=null">content=#{content},</if>
+        <if test="content!=null">writer=#{writer}</if>
+    </set>
+    where bno=#{bno};
+  </update>
+  
+  <delete id="delete">
+    delete from tbl_board where bno=#{bno};
+  </delete>
+</mapper>
