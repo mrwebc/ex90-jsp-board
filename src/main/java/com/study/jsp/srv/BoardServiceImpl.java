@@ -19,7 +19,12 @@ public class BoardServiceImpl implements BoardService{
     this.dao = dao;
     this.modelMapper = modelMapper;
   }
-  
+
+  @Override
+  public int total() {
+    return dao.total();
+  }
+
   @Override
   public void create(BoardDTO dto) {
     BoardVO vo = modelMapper.map(dto, BoardVO.class);
@@ -90,6 +95,5 @@ public class BoardServiceImpl implements BoardService{
     //존재하지 않는 게시물에 대한 예외처리    
     if(result<1) throw new NotExistPostException(bno);     
   }
-
 
 }

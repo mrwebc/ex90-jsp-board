@@ -20,6 +20,11 @@ public class BoardMapperDAO implements BoardMapper{
   }
 
   @Override
+  public int total() {
+    return mp().total();
+  }
+
+  @Override
   public int create(BoardVO vo) {
     int result = 0;
     

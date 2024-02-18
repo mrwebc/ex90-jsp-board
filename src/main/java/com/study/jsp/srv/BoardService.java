@@ -9,6 +9,8 @@ import com.study.jsp.model.Criteria;
 public interface BoardService {
   void create(BoardDTO dto);
   
+  int total();
+  
   List<BoardDTO> listAll();
 
   List<BoardDTO> listPage(int page);// page를 받아서 offset을 계산 

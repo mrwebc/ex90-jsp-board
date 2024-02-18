@@ -7,6 +7,8 @@ import com.study.jsp.model.Criteria;
 
 public interface BoardMapper {
 
+  int total();
+  
   int create(BoardVO vo);
   
   List<BoardVO> listAll();

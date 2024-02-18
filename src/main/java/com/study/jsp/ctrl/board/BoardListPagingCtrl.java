@@ -43,9 +43,11 @@ public class BoardListPagingCtrl implements Controller {
     PaginationMaker pagiMaker = new PaginationMaker();
     pagiMaker.setCri(cri);
     pagiMaker.setdisplayPagiNum(10);
-    pagiMaker.setTotalCount(322);
     
     BoardService boardSrv = Factory.INSTANCE.getBoardService();
+    pagiMaker.setTotalCount(boardSrv.total());
+    
+    
     List<BoardDTO> list = boardSrv.listPaging(cri);
     
     req.setAttribute("list", list);
