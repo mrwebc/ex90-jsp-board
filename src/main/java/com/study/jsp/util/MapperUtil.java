@@ -1,4 +1,4 @@
-package com.study.jsp.conf;
+package com.study.jsp.util;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;

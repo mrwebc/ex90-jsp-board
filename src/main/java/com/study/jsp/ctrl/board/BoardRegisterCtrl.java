@@ -6,8 +6,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.study.jsp.conf.Factory;
 import com.study.jsp.ctrl.Controller;
+import com.study.jsp.ioc.Factory;
 import com.study.jsp.model.BoardDTO;
 import com.study.jsp.srv.BoardService;
 
@@ -18,11 +18,8 @@ public class BoardRegisterCtrl implements Controller {
     
     Map<String, String> viewInfo = new HashMap<String, String>();
     
-    viewInfo.put("name", "forward");
-    viewInfo.put("path", "/board/success.jsp");
-    
-    viewInfo.put("name", "redirect");
-    viewInfo.put("path", "/board/listAll.do");
+    viewInfo.put("mode", "redirect");
+    viewInfo.put("viewName", "/board/listAll.do");
     
     String title = req.getParameter("title");
     String content = req.getParameter("content");
@@ -34,8 +31,6 @@ public class BoardRegisterCtrl implements Controller {
         .writer(writer)
         .build();
        
-    System.out.println("BoardRegisterCtrl 컨트롤러 호출~!");
-    System.out.println(dto.toString());
     
     BoardService boardSrv = Factory.INSTANCE.getBoardService();
     boardSrv.create(dto);   

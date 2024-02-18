@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.study.jsp.conf.Factory;
+import com.study.jsp.ioc.Factory;
 import com.study.jsp.model.BoardDTO;
 import com.study.jsp.model.Criteria;
 import com.study.jsp.srv.BoardService;

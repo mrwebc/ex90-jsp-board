@@ -1,7 +1,7 @@
-drop database if exists jspboard;
-CREATE DATABASE IF NOT EXISTS jspboard DEFAULT CHARACTER SET utf8;
+drop database if exists jsp_board;
+CREATE DATABASE IF NOT EXISTS jsp_board DEFAULT CHARACTER SET utf8;
 
-USE jspboard;
+USE jsp_board;
 
 drop table if exists tbl_board;
 create table tbl_board (
@@ -22,7 +22,7 @@ select count(*) from tbl_board;
 
 delete from tbl_board where title="";
 
-insert into tbl_board (title, content, writer) values ("아기공룡둘리","둘리는 내친구~!", 'duly'); 
+insert into tbl_board (title, content, writer) values ('hello, duly','I am duly','duly'); 
 insert into tbl_board (title, content, writer) (select title, content, writer from tbl_board);
 
 

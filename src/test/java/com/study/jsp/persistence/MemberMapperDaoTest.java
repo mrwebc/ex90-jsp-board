@@ -2,7 +2,7 @@ package com.study.jsp.persistence;
 
 import org.junit.Test;
 
-import com.study.jsp.conf.Factory;
+import com.study.jsp.ioc.Factory;
 import com.study.jsp.model.MemberDTO;
 import com.study.jsp.srv.MemberService;
 

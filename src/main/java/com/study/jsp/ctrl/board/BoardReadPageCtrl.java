@@ -6,9 +6,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.study.jsp.conf.Factory;
 import com.study.jsp.ctrl.Controller;
 import com.study.jsp.except.NotExistPostException;
+import com.study.jsp.ioc.Factory;
 import com.study.jsp.model.BoardDTO;
 import com.study.jsp.srv.BoardService;
 
@@ -18,8 +18,8 @@ public class BoardReadPageCtrl implements Controller {
   public Map<String, String> execute(HttpServletRequest req, HttpServletResponse res) {
 
     Map<String, String> viewInfo = new HashMap<String, String>();
-    viewInfo.put("name", "forward");
-    viewInfo.put("path", "/board/readPage.jsp");
+    viewInfo.put("mode", "forward");
+    viewInfo.put("viewName", "/board/readPage.jsp");
     
     int page = 1;
     int spp = 10;
@@ -55,8 +55,8 @@ public class BoardReadPageCtrl implements Controller {
     }catch(NotExistPostException e) {
       System.out.println(e.getMessage());
       
-      viewInfo.put("name", "redirect");
-      viewInfo.put("path", "/board/listPaging.do");
+      viewInfo.put("mode", "redirect");
+      viewInfo.put("viewName", "/board/listPaging.do");
     }
     
     return viewInfo;

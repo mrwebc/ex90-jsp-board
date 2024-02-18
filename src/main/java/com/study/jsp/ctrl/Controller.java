@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 public interface Controller {  
   Map<String, String> execute(HttpServletRequest req, HttpServletResponse res);
   /*
-   * {
+   {
         Map<String, String> viewInfo = new HashMap<String, String>();        
-        viewInfo.put("name", "redirect");
-        viewInfo.put("path", "/board/listAll.do");
+        viewInfo.put("mode", "redirect");
+        viewInfo.put("viewName", "/board/listAll.do");
         
         Map<String, String> viewInfo = new HashMap<String, String>();
-        viewInfo.put("name", "forward");
-        viewInfo.put("path", "/board/read.jsp");
-   * }
-   * 
+        viewInfo.put("mode", "forward");
+        viewInfo.put("viewName", "/board/read.jsp");
+   }
+
    */
 }

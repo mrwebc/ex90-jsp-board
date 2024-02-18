@@ -28,7 +28,7 @@ public class DispatcherServlet extends HttpServlet{
   @Override
   protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     // 1단계 - URI 분석
-    String requestURI = req.getRequestURI();// 컨텍스트부터 .jsp 까지
+    String requestURI = req.getRequestURI();// 컨텍스트부터 .do 까지
     String contextPath = req.getContextPath();
     
     String path = "";
@@ -46,15 +46,15 @@ public class DispatcherServlet extends HttpServlet{
     // 3단계 - 서브컨트롤러 실행 및 path 추출
     Map<String, String> viewInfo = ctrl.execute(req, res);
     
-    if(viewInfo.get("name").equals("forward")) {
-      // 4단계 - 프론트단으로 데이터 포워딩
+    if(viewInfo.get("mode").equals("forward")) {
+      // 4단계 - 프론트엔드 단으로 데이터 포워딩 또는 리다이렉트
       //getRequestDispatcher()는 contextPath를 기준으로 자원을 구한다.
-      RequestDispatcher dispatcher = req.getRequestDispatcher(viewInfo.get("path"));
+      RequestDispatcher dispatcher = req.getRequestDispatcher(viewInfo.get("viewName"));
       dispatcher.forward(req, res);
       return;
     }
     
-    res.sendRedirect(req.getContextPath()+viewInfo.get("path"));
+    res.sendRedirect(req.getContextPath()+viewInfo.get("viewName"));
 
   }
 }

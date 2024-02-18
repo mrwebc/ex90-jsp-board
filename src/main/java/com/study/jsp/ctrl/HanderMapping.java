@@ -39,7 +39,7 @@ public class HanderMapping {
     urlMap.put("/board/updatePageOk.do", new BoardUpdatePageOkCtrl());
   }
 
-  public Controller getController(String path) {
-    return urlMap.get(path);
+  public Controller getController(String viewName) {
+    return urlMap.get(viewName);
   }
 }

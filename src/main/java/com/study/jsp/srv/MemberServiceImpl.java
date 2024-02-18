@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.modelmapper.ModelMapper;
 
-import com.study.jsp.conf.MapperUtil;
 import com.study.jsp.model.MemberDTO;
 import com.study.jsp.model.MemberVO;
 import com.study.jsp.persistence.MemberMapper;
+import com.study.jsp.util.MapperUtil;
 
 public class MemberServiceImpl implements MemberService{
   
